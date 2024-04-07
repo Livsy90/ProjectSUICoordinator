@@ -12,6 +12,9 @@
 		D6D7DFBF2BC2753400B8EEE5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D6D7DFBE2BC2753400B8EEE5 /* Assets.xcassets */; };
 		D6D7DFC22BC2753400B8EEE5 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D6D7DFC12BC2753400B8EEE5 /* Preview Assets.xcassets */; };
 		D6D7DFCA2BC278FC00B8EEE5 /* PostListTabCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6D7DFC92BC278FC00B8EEE5 /* PostListTabCoordinator.swift */; };
+		D6D7DFD02BC28F5700B8EEE5 /* Router in Frameworks */ = {isa = PBXBuildFile; productRef = D6D7DFCF2BC28F5700B8EEE5 /* Router */; };
+		D6D7DFD22BC28FA500B8EEE5 /* PostList in Frameworks */ = {isa = PBXBuildFile; productRef = D6D7DFD12BC28FA500B8EEE5 /* PostList */; };
+		D6D7DFD42BC2910700B8EEE5 /* AppTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6D7DFD32BC2910700B8EEE5 /* AppTabView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -23,6 +26,7 @@
 		D6D7DFC82BC2777F00B8EEE5 /* Router */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = Router; sourceTree = "<group>"; };
 		D6D7DFC92BC278FC00B8EEE5 /* PostListTabCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostListTabCoordinator.swift; sourceTree = "<group>"; };
 		D6D7DFCB2BC2792D00B8EEE5 /* PostList */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = PostList; sourceTree = "<group>"; };
+		D6D7DFD32BC2910700B8EEE5 /* AppTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppTabView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -30,6 +34,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D6D7DFD22BC28FA500B8EEE5 /* PostList in Frameworks */,
+				D6D7DFD02BC28F5700B8EEE5 /* Router in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -43,6 +49,7 @@
 				D6D7DFCC2BC27A7D00B8EEE5 /* Foundation */,
 				D6D7DFB92BC2753100B8EEE5 /* ProjectSUICoordinator */,
 				D6D7DFB82BC2753100B8EEE5 /* Products */,
+				D6D7DFCE2BC28F5700B8EEE5 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -57,11 +64,12 @@
 		D6D7DFB92BC2753100B8EEE5 /* ProjectSUICoordinator */ = {
 			isa = PBXGroup;
 			children = (
+				D6D7DFC92BC278FC00B8EEE5 /* PostListTabCoordinator.swift */,
 				D6D7DFBA2BC2753100B8EEE5 /* ProjectSUICoordinatorApp.swift */,
 				D6D7DFBC2BC2753100B8EEE5 /* ContentView.swift */,
 				D6D7DFBE2BC2753400B8EEE5 /* Assets.xcassets */,
 				D6D7DFC02BC2753400B8EEE5 /* Preview Content */,
-				D6D7DFC92BC278FC00B8EEE5 /* PostListTabCoordinator.swift */,
+				D6D7DFD32BC2910700B8EEE5 /* AppTabView.swift */,
 			);
 			path = ProjectSUICoordinator;
 			sourceTree = "<group>";
@@ -90,6 +98,13 @@
 			path = Features;
 			sourceTree = "<group>";
 		};
+		D6D7DFCE2BC28F5700B8EEE5 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -106,6 +121,10 @@
 			dependencies = (
 			);
 			name = ProjectSUICoordinator;
+			packageProductDependencies = (
+				D6D7DFCF2BC28F5700B8EEE5 /* Router */,
+				D6D7DFD12BC28FA500B8EEE5 /* PostList */,
+			);
 			productName = ProjectSUICoordinator;
 			productReference = D6D7DFB72BC2753100B8EEE5 /* ProjectSUICoordinator.app */;
 			productType = "com.apple.product-type.application";
@@ -162,6 +181,7 @@
 			files = (
 				D6D7DFBD2BC2753100B8EEE5 /* ContentView.swift in Sources */,
 				D6D7DFBB2BC2753100B8EEE5 /* ProjectSUICoordinatorApp.swift in Sources */,
+				D6D7DFD42BC2910700B8EEE5 /* AppTabView.swift in Sources */,
 				D6D7DFCA2BC278FC00B8EEE5 /* PostListTabCoordinator.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -368,6 +388,17 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		D6D7DFCF2BC28F5700B8EEE5 /* Router */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = Router;
+		};
+		D6D7DFD12BC28FA500B8EEE5 /* PostList */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = PostList;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = D6D7DFAF2BC2753100B8EEE5 /* Project object */;
 }

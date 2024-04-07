@@ -8,10 +8,41 @@
 import Router
 import SwiftUI
 
-struct PostListCordinator: View {
+enum Destination: Hashable {
+    case postDetail(model: String)
+}
+
+enum SheetDestination: Identifiable {
+    var id: String {
+        switch self {
+        case .info:
+            return "info"
+        }
+    }
+    
+    case info(model: String)
+}
+
+public struct PostListCordinator: View {
     @Environment(Router.self) private var router
     
-    var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+    public init() {}
+    
+    public var body: some View {
+        PostListView(viewModel: PostListViewModel(title: "PostList"))
+            .navigationDestination(for: Destination.self) { destination in
+                switch destination {
+                case .postDetail(let model):
+                    PostDetailView(viewModel: PostDetailViewModel(title: "PostDetail"))
+                }
+            }
+            .sheet(item: router.sheetBinding) { destination in
+                if let destination = destination.destination as? SheetDestination {
+                    switch destination {
+                    case .info(let model):
+                        Text(model)
+                    }
+                }
+            }
     }
 }
