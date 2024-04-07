@@ -14,7 +14,7 @@ struct PostListTabCoordinator: View {
     @State var router: Router = .init()
     
     var body: some View {
-        NavigationStack(path: $router.navPath) {
+        NavigationStack(path: $router.navigationPath) {
             PostListCordinator()
                 .toolbar(.visible, for: .tabBar)
         }

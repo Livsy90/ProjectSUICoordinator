@@ -33,14 +33,17 @@ public struct PostListCordinator: View {
             .navigationDestination(for: Destination.self) { destination in
                 switch destination {
                 case .postDetail(let model):
-                    PostDetailView(viewModel: PostDetailViewModel(title: "PostDetail"))
+                    PostDetailView(viewModel: PostDetailViewModel(title: model))
                 }
             }
-            .sheet(item: router.sheetBinding) { destination in
+            .sheet(item: router.sheetItem) { destination in
                 if let destination = destination.destination as? SheetDestination {
                     switch destination {
                     case .info(let model):
                         Text(model)
+                            .onTapGesture {
+                                router.dismissSheet()
+                            }
                     }
                 }
             }

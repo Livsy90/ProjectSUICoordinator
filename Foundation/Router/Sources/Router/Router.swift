@@ -11,30 +11,36 @@ public class AnyIdentifiable: Identifiable {
 
 @Observable
 public final class Router {
-    public var navPath = NavigationPath()
-    public var sheetBinding: Binding<AnyIdentifiable?> {
+    
+    public var navigationPath = NavigationPath()
+    public var sheetItem: Binding<AnyIdentifiable?> {
         Binding(
-            get: { self.presentedSheet },
-            set: { self.presentedSheet = $0 }
+            get: { self.presentedSheetItem },
+            set: { self.presentedSheetItem = $0 }
         )
     }
-    private var presentedSheet: AnyIdentifiable?
+    private var presentedSheetItem: AnyIdentifiable?
     
     public init() {}
     
     public func presentSheet(destination: any Identifiable) {
-        presentedSheet = AnyIdentifiable(destination: destination)
+        presentedSheetItem = AnyIdentifiable(destination: destination)
+    }
+    
+    public func dismissSheet() {
+        presentedSheetItem = nil
     }
     
     public func navigate(to destination: any Hashable) {
-        navPath.append(destination)
+        navigationPath.append(destination)
     }
     
     public func navigateBack() {
-        navPath.removeLast()
+        navigationPath.removeLast()
     }
     
     public func navigateToRoot() {
-        navPath.removeLast(navPath.count)
+        navigationPath.removeLast(navigationPath.count)
     }
+    
 }
