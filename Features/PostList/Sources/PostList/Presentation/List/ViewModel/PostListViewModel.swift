@@ -25,6 +25,7 @@ final class PostListViewModel: PostListViewModelProtocol {
         }
     }
     
+    @MainActor
     func loadData() async {
         let result = await dataSource.getPostList(page: 1)
         
