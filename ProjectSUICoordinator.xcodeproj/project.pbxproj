@@ -11,6 +11,7 @@
 		D6D7DFBD2BC2753100B8EEE5 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6D7DFBC2BC2753100B8EEE5 /* ContentView.swift */; };
 		D6D7DFBF2BC2753400B8EEE5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D6D7DFBE2BC2753400B8EEE5 /* Assets.xcassets */; };
 		D6D7DFC22BC2753400B8EEE5 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D6D7DFC12BC2753400B8EEE5 /* Preview Assets.xcassets */; };
+		D6D7DFCA2BC278FC00B8EEE5 /* PostListTabCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6D7DFC92BC278FC00B8EEE5 /* PostListTabCoordinator.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -19,6 +20,9 @@
 		D6D7DFBC2BC2753100B8EEE5 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		D6D7DFBE2BC2753400B8EEE5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D6D7DFC12BC2753400B8EEE5 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		D6D7DFC82BC2777F00B8EEE5 /* Router */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = Router; sourceTree = "<group>"; };
+		D6D7DFC92BC278FC00B8EEE5 /* PostListTabCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostListTabCoordinator.swift; sourceTree = "<group>"; };
+		D6D7DFCB2BC2792D00B8EEE5 /* PostList */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = PostList; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -35,6 +39,8 @@
 		D6D7DFAE2BC2753100B8EEE5 = {
 			isa = PBXGroup;
 			children = (
+				D6D7DFCD2BC27B3300B8EEE5 /* Features */,
+				D6D7DFCC2BC27A7D00B8EEE5 /* Foundation */,
 				D6D7DFB92BC2753100B8EEE5 /* ProjectSUICoordinator */,
 				D6D7DFB82BC2753100B8EEE5 /* Products */,
 			);
@@ -55,6 +61,7 @@
 				D6D7DFBC2BC2753100B8EEE5 /* ContentView.swift */,
 				D6D7DFBE2BC2753400B8EEE5 /* Assets.xcassets */,
 				D6D7DFC02BC2753400B8EEE5 /* Preview Content */,
+				D6D7DFC92BC278FC00B8EEE5 /* PostListTabCoordinator.swift */,
 			);
 			path = ProjectSUICoordinator;
 			sourceTree = "<group>";
@@ -65,6 +72,22 @@
 				D6D7DFC12BC2753400B8EEE5 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		D6D7DFCC2BC27A7D00B8EEE5 /* Foundation */ = {
+			isa = PBXGroup;
+			children = (
+				D6D7DFC82BC2777F00B8EEE5 /* Router */,
+			);
+			path = Foundation;
+			sourceTree = "<group>";
+		};
+		D6D7DFCD2BC27B3300B8EEE5 /* Features */ = {
+			isa = PBXGroup;
+			children = (
+				D6D7DFCB2BC2792D00B8EEE5 /* PostList */,
+			);
+			path = Features;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -139,6 +162,7 @@
 			files = (
 				D6D7DFBD2BC2753100B8EEE5 /* ContentView.swift in Sources */,
 				D6D7DFBB2BC2753100B8EEE5 /* ProjectSUICoordinatorApp.swift in Sources */,
+				D6D7DFCA2BC278FC00B8EEE5 /* PostListTabCoordinator.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
