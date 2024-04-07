@@ -47,8 +47,6 @@ struct PostListView: View {
     }
 }
 
-
-
 #Preview {
     PostListView(viewModel: PostListViewModel(title: "Test"))
 }
