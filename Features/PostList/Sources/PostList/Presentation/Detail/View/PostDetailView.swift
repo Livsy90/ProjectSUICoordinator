@@ -20,14 +20,20 @@ struct PostDetailView: View {
     var body: some View {
         ScrollView {
             Text(viewModel.title)
-                .onTapGesture {
-                    router.presentSheet(destination: SheetDestination.info(model: "Info"))
-                }
-                .padding()
+                .padding(.horizontal)
         }
-        .toolbar(.hidden, for: .tabBar)
+        .toolbar {
+            ToolbarItem(placement: .status) {
+                Button {
+                    router.presentSheet(destination: SheetDestination.info(model: "Info"))
+                } label: {
+                    Text("Info")
+                }
+                .buttonStyle(.borderless)
+                .controlSize(.large)
+            }
+        }
     }
-    
 }
 
 #Preview {

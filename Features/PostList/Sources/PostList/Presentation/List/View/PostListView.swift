@@ -18,7 +18,6 @@ struct PostListView: View {
         GridItem(.flexible())
     ]
     
-    
     init(viewModel: PostListViewModelObservable) {
         self.viewModel = viewModel
     }
@@ -26,23 +25,77 @@ struct PostListView: View {
     var body: some View {
         switch viewModel.state {
         case .loading:
-            EmptyView()
+            ProgressView()
             
         case let .display(postList):
             ScrollView {
-                LazyVGrid(columns: columns, alignment: .leading, spacing: 8) {
+                LazyVGrid(columns: columns, alignment: .leading, spacing: 4) {
                     ForEach(postList, id: \.id) { post in
-                        Text(post.excerpt)
-                            .onTapGesture {
-                                router.navigate(to: Destination.postDetail(model: post.content))
+                        ZStack {
+                            RoundedRectangle(cornerRadius: 16)
+                                .fill(Color.black.opacity(0.4))
+                                .padding(6)
+                            
+                            VStack {
+                                AsyncImage(url: post.imgURL) { phase in
+                                    switch phase {
+                                    case .empty:
+                                        ProgressView()
+                                        
+                                    case .success(let image):
+                                        image.resizable()
+                                            .aspectRatio(contentMode: .fit)
+                                            .frame(maxWidth: 100, maxHeight: 80)
+                                        
+                                    case .failure:
+                                        Image(systemName: "photo")
+                                        
+                                    @unknown default:
+                                        EmptyView()
+                                    }
+                                }
+                                .padding(.top, 6)
+                                
+                                Text(post.excerpt)
+                                    .foregroundStyle(.white)
+                                    .padding(20)
                             }
-                            .padding()
+                        }
+                        .onTapGesture {
+                            router.navigate(to: Destination.postDetail(model: post.content))
+                        }
+                    }
+                }
+            }
+            .toolbarBackground(.green)
+            .toolbar {
+                ToolbarItem(placement: .topBarLeading) {
+                    Button {
+                        // action
+                    } label: {
+                        Image(systemName: "line.3.horizontal")
+                    }
+                }
+             
+                ToolbarItem(placement: .topBarTrailing) {
+                    Button {
+                        // action
+                    } label: {
+                        Image(systemName: "plus")
+                    }
+                }
+             
+                ToolbarItem(placement: .topBarTrailing) {
+                    Button {
+                        // action
+                    } label: {
+                        Image(systemName: "square.and.arrow.up")
                     }
                 }
             }
             
-        case .error:
-            EmptyView()
+        case let .error(error):
+            Text(error.localizedDescription)
         }
     }
 }
