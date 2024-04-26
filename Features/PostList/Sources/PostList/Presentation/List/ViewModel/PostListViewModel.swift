@@ -15,7 +15,11 @@ final class PostListViewModel: PostListViewModelProtocol {
     var title: String
     var state: PostListState = .loading
     
-    private let dataSource = WPDataSource(url: URL(string: "https://intentapp.ru/wp-json")!, httpScheme: .https, additionalHeader: nil)
+    private let dataSource = WPDataSource(
+        urlString: "https://livsycode.com/",
+        httpScheme: .https,
+        additionalHeaders: nil
+    )
     
     init(title: String) {
         self.title = title
