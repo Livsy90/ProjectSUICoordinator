@@ -30,7 +30,7 @@ struct ViewFactory {
                 .padding()
                 .background(.purple)
                 .foregroundStyle(.white)
-                .font(.largeTitle)
+                .font(.headline)
             
         case .menu(let model):
             Text(model)

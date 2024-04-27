@@ -35,7 +35,7 @@ struct PostListView: View {
                                 .padding()
                         }
                         .onTapGesture {
-                            router.navigate(to: Destination.postDetail(model: post.text))
+                            router.navigate(to: Destination.postDetails(model: post.text))
                         }
                     }
                 }

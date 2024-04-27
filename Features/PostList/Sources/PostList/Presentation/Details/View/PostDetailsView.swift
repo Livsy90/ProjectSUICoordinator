@@ -19,10 +19,8 @@ struct PostDetailsView: View {
     
     var body: some View {
         ScrollView {
-            VStack {
-                Text(viewModel.content)
-                    .padding()
-            }
+            Text(viewModel.content)
+                .padding()
         }
         .toolbar {
             ToolbarItem(placement: .topBarTrailing) {
