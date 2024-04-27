@@ -13,11 +13,6 @@ struct PostListView: View {
     @Environment(Router.self) private var router
     @State private var viewModel: PostListViewModelObservable
     
-    private let columns = [
-        GridItem(.flexible()),
-        GridItem(.flexible())
-    ]
-    
     init(viewModel: PostListViewModelObservable) {
         self.viewModel = viewModel
     }
