@@ -10,6 +10,7 @@ import Foundation
 public class DataSource {
     
     struct Post: Hashable {
+        var id = UUID()
         var text: String
     }
     
