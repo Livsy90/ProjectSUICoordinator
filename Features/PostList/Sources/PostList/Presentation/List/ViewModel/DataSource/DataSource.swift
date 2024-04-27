@@ -7,7 +7,7 @@
 
 import Foundation
 
-public class DataSource {
+public final class DataSource {
     
     struct Post: Hashable {
         let id = UUID()
