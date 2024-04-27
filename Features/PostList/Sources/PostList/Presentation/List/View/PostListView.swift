@@ -29,7 +29,7 @@ struct PostListView: View {
             
         case let .display(postList):
             ScrollView {
-                VStack {
+                LazyVStack {
                     ForEach(postList, id: \.self) { post in
                         VStack {
                             Text(post.text)
