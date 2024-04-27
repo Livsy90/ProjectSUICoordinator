@@ -6,8 +6,6 @@
 //
 
 import Observation
-import SwiftPresso
-import Foundation
 
 @Observable
 final class PostListViewModel: PostListViewModelProtocol {
