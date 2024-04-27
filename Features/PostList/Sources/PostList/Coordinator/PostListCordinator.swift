@@ -7,19 +7,6 @@
 
 import Router
 import SwiftUI
-import SwiftPresso
-
-extension WPPostParts: Equatable {
-    public static func == (lhs: WPPostParts, rhs: WPPostParts) -> Bool {
-        lhs.id == rhs.id
-    }
-}
-
-extension WPPostParts: Hashable {
-    public func hash(into hasher: inout Hasher) {
-        hasher.combine(id)
-    }
-}
 
 enum Destination: Hashable {
     case postDetail(model: String)
@@ -28,12 +15,13 @@ enum Destination: Hashable {
 enum SheetDestination: Identifiable {
     var id: String {
         switch self {
-        case .info:
-            return "info"
+        case .menu: "menu"
+        case .share: "share"
         }
     }
     
-    case info(model: String)
+    case menu(model: String)
+    case share(model: String)
 }
 
 public struct PostListCordinator: View {
@@ -42,18 +30,23 @@ public struct PostListCordinator: View {
     public init() {}
     
     public var body: some View {
-        PostListView(viewModel: PostListViewModel(title: "PostList"))
+        ViewFactory().view(of: .postList)
             .navigationDestination(for: Destination.self) { destination in
                 switch destination {
                 case .postDetail(let model):
-                    PostDetailView(viewModel: PostDetailViewModel(content: model))
+                    ViewFactory().view(of: .postDetails(model))
                 }
             }
             .sheet(item: router.sheetItem) { destination in
                 if let destination = destination.destination as? SheetDestination {
                     switch destination {
-                    case .info(let model):
-                        Text(model)
+                    case .menu(let model):
+                        ViewFactory().view(of: .menu(model))
+                            .onTapGesture {
+                                router.dismissSheet()
+                            }
+                    case .share(let model):
+                        ViewFactory().view(of: .share(model))
                             .onTapGesture {
                                 router.dismissSheet()
                             }

@@ -48,7 +48,7 @@ struct PostListView: View {
             .toolbar {
                 ToolbarItem(placement: .topBarLeading) {
                     Button {
-                        router.presentSheet(destination: SheetDestination.info(model: "Menu"))
+                        router.presentSheet(destination: SheetDestination.menu(model: "Menu"))
                     } label: {
                         Image(systemName: "line.3.horizontal")
                     }
