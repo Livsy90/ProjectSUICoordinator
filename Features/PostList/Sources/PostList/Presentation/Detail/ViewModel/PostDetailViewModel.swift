@@ -11,10 +11,10 @@ import SwiftPresso
 @Observable
 final class PostDetailViewModel: PostDetailViewModelProtocol {    
     
-    var postParts: [WPPostParts]
+    var content: String
     
-    init(postParts: [WPPostParts]) {
-        self.postParts = postParts
+    init(content: String) {
+        self.content = content
     }
     
 }

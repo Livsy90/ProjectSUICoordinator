@@ -10,6 +10,6 @@ import SwiftPresso
 
 enum PostListState {
     case loading
-    case display([RefinedPost])
+    case display([DataSource.Post])
     case error(Error)
 }

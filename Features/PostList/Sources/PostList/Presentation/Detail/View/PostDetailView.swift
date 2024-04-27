@@ -7,9 +7,11 @@
 
 import SwiftUI
 import SwiftPresso
+import Router
 
 struct PostDetailView: View {
     
+    @Environment(Router.self) private var router
     @State private var viewModel: PostDetailViewModelObservable
     
     init(viewModel: PostDetailViewModelObservable) {
@@ -19,32 +21,17 @@ struct PostDetailView: View {
     var body: some View {
         ScrollView {
             VStack {
-                ForEach(viewModel.postParts) { object in
-                   partView(object)
-                }
+                Text(viewModel.content)
+                    .padding()
             }
         }
-    }
-    
-    @ViewBuilder
-    private func partView(_ object: WPPostParts) -> some View {
-        if object.hasText, let text = object.text {
-            Text(text.string)
-                .padding()
-        } else if let url = object.url, url.isYouTubeURL {
-            Link(destination: url) {
-                Text("Watch on YouTube")
-                    .padding()
-            }
-        } else if let image = object.image {
-            Image(uiImage: image)
-                .resizable()
-                .scaledToFit()
-                .frame(height: 200)
-        } else if let url = object.url {
-            Link(destination: url) {
-                Text(object.text?.string ?? "Link")
-                    .padding()
+        .toolbar {
+            ToolbarItem(placement: .topBarTrailing) {
+                Button {
+                    router.presentSheet(destination: SheetDestination.info(model: "Share"))
+                } label: {
+                    Image(systemName: "square.and.arrow.up")
+                }
             }
         }
     }

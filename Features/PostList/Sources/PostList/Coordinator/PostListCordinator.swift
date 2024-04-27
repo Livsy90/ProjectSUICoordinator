@@ -22,7 +22,7 @@ extension WPPostParts: Hashable {
 }
 
 enum Destination: Hashable {
-    case postDetail(model: [WPPostParts])
+    case postDetail(model: String)
 }
 
 enum SheetDestination: Identifiable {
@@ -46,7 +46,7 @@ public struct PostListCordinator: View {
             .navigationDestination(for: Destination.self) { destination in
                 switch destination {
                 case .postDetail(let model):
-                    PostDetailView(viewModel: PostDetailViewModel(postParts: model))
+                    PostDetailView(viewModel: PostDetailViewModel(content: model))
                 }
             }
             .sheet(item: router.sheetItem) { destination in
