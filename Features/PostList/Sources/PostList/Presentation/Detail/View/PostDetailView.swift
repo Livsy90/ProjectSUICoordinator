@@ -6,11 +6,10 @@
 //
 
 import SwiftUI
-import Router
+import SwiftPresso
 
 struct PostDetailView: View {
     
-    @Environment(Router.self) private var router
     @State private var viewModel: PostDetailViewModelObservable
     
     init(viewModel: PostDetailViewModelObservable) {
@@ -19,23 +18,35 @@ struct PostDetailView: View {
     
     var body: some View {
         ScrollView {
-            Text(viewModel.title)
-                .padding(.horizontal)
-        }
-        .toolbar {
-            ToolbarItem(placement: .status) {
-                Button {
-                    router.presentSheet(destination: SheetDestination.info(model: "Info"))
-                } label: {
-                    Text("Info")
+            VStack {
+                ForEach(viewModel.postParts) { object in
+                   partView(object)
                 }
-                .buttonStyle(.borderless)
-                .controlSize(.large)
             }
         }
     }
-}
-
-#Preview {
-    PostDetailView(viewModel: PostDetailViewModel(title: "Test"))
+    
+    @ViewBuilder
+    private func partView(_ object: WPPostParts) -> some View {
+        if object.hasText, let text = object.text {
+            Text(text.string)
+                .padding()
+        } else if let url = object.url, url.isYouTubeURL {
+            Link(destination: url) {
+                Text("Watch on YouTube")
+                    .padding()
+            }
+        } else if let image = object.image {
+            Image(uiImage: image)
+                .resizable()
+                .scaledToFit()
+                .frame(height: 200)
+        } else if let url = object.url {
+            Link(destination: url) {
+                Text(object.text?.string ?? "Link")
+                    .padding()
+            }
+        }
+    }
+    
 }

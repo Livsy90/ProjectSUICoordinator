@@ -6,14 +6,15 @@
 //
 
 import Observation
+import SwiftPresso
 
 @Observable
-final class PostDetailViewModel: PostDetailViewModelProtocol {
+final class PostDetailViewModel: PostDetailViewModelProtocol {    
     
-    var title: String
+    var postParts: [WPPostParts]
     
-    init(title: String) {
-        self.title = title
+    init(postParts: [WPPostParts]) {
+        self.postParts = postParts
     }
     
 }

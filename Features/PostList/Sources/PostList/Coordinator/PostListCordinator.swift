@@ -7,9 +7,22 @@
 
 import Router
 import SwiftUI
+import SwiftPresso
+
+extension WPPostParts: Equatable {
+    public static func == (lhs: WPPostParts, rhs: WPPostParts) -> Bool {
+        lhs.id == rhs.id
+    }
+}
+
+extension WPPostParts: Hashable {
+    public func hash(into hasher: inout Hasher) {
+        hasher.combine(id)
+    }
+}
 
 enum Destination: Hashable {
-    case postDetail(model: String)
+    case postDetail(model: [WPPostParts])
 }
 
 enum SheetDestination: Identifiable {
@@ -33,7 +46,7 @@ public struct PostListCordinator: View {
             .navigationDestination(for: Destination.self) { destination in
                 switch destination {
                 case .postDetail(let model):
-                    PostDetailView(viewModel: PostDetailViewModel(title: model))
+                    PostDetailView(viewModel: PostDetailViewModel(postParts: model))
                 }
             }
             .sheet(item: router.sheetItem) { destination in

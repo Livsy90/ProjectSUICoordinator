@@ -10,8 +10,8 @@ import Router
 
 struct PostListView: View {
     
-    @State private var viewModel: PostListViewModelObservable
     @Environment(Router.self) private var router
+    @State private var viewModel: PostListViewModelObservable
     
     private let columns = [
         GridItem(.flexible()),
@@ -33,7 +33,7 @@ struct PostListView: View {
                     ForEach(postList, id: \.id) { post in
                         ZStack {
                             RoundedRectangle(cornerRadius: 16)
-                                .fill(Color.black.opacity(0.4))
+                                .fill(Color.purple.opacity(0.2))
                                 .padding(6)
                             
                             VStack {
@@ -44,8 +44,10 @@ struct PostListView: View {
                                         
                                     case .success(let image):
                                         image.resizable()
-                                            .aspectRatio(contentMode: .fit)
-                                            .frame(maxWidth: 100, maxHeight: 80)
+                                            .aspectRatio(contentMode: .fill)
+                                            .frame(maxWidth: 80, maxHeight: 80)
+                                            .clipShape(Circle())
+                                            .padding()
                                         
                                     case .failure:
                                         Image(systemName: "photo")
@@ -56,22 +58,21 @@ struct PostListView: View {
                                 }
                                 .padding(.top, 6)
                                 
-                                Text(post.excerpt)
-                                    .foregroundStyle(.white)
+                                Text(post.excerpt.trunc(length: 100))
+                                    .foregroundStyle(.black)
                                     .padding(20)
                             }
                         }
                         .onTapGesture {
-                            router.navigate(to: Destination.postDetail(model: post.content))
+                            router.navigate(to: Destination.postDetail(model: Mapper().map(post: post)))
                         }
                     }
                 }
             }
-            .toolbarBackground(.green)
             .toolbar {
                 ToolbarItem(placement: .topBarLeading) {
                     Button {
-                        // action
+                        router.presentSheet(destination: SheetDestination.info(model: "Menu"))
                     } label: {
                         Image(systemName: "line.3.horizontal")
                     }
@@ -79,15 +80,7 @@ struct PostListView: View {
              
                 ToolbarItem(placement: .topBarTrailing) {
                     Button {
-                        // action
-                    } label: {
-                        Image(systemName: "plus")
-                    }
-                }
-             
-                ToolbarItem(placement: .topBarTrailing) {
-                    Button {
-                        // action
+                        router.presentSheet(destination: SheetDestination.info(model: "Share"))
                     } label: {
                         Image(systemName: "square.and.arrow.up")
                     }
@@ -98,8 +91,4 @@ struct PostListView: View {
             Text(error.localizedDescription)
         }
     }
-}
-
-#Preview {
-    PostListView(viewModel: PostListViewModel(title: "Test"))
 }

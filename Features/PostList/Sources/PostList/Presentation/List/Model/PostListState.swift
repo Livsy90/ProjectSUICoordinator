@@ -6,10 +6,10 @@
 //
 
 import Foundation
-import WPDataSource
+import SwiftPresso
 
 enum PostListState {
     case loading
-    case display([Post])
+    case display([RefinedPost])
     case error(Error)
 }

@@ -6,9 +6,10 @@
 //
 
 import Observation
+import SwiftPresso
 
 typealias PostDetailViewModelObservable = PostDetailViewModelProtocol & Observable
 
 protocol PostDetailViewModelProtocol: AnyObject {
-    var title: String { get }
+    var postParts: [WPPostParts] { get }
 }
