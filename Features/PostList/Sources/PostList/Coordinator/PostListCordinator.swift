@@ -9,7 +9,7 @@ import Router
 import SwiftUI
 
 enum Destination: Hashable {
-    case postDetail(model: String)
+    case postDetails(model: String)
 }
 
 enum SheetDestination: Identifiable {
@@ -33,7 +33,7 @@ public struct PostListCordinator: View {
         ViewFactory().view(of: .postList)
             .navigationDestination(for: Destination.self) { destination in
                 switch destination {
-                case .postDetail(let model):
+                case .postDetails(let model):
                     ViewFactory().view(of: .postDetails(model))
                 }
             }
