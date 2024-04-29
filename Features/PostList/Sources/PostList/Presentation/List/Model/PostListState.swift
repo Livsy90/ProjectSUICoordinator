@@ -6,7 +6,6 @@
 //
 
 import Foundation
-import SwiftPresso
 
 enum PostListState {
     case loading

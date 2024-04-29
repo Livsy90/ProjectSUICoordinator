@@ -16,14 +16,12 @@ let package = Package(
     ],
     dependencies: [
         .package(path: "../Foundation/Router"),
-        .package(url: "https://github.com/Livsy90/WPDataSource.git", .upToNextMajor(from: "1.0.0"))
     ],
     targets: [
         .target(
             name: "PostList",
             dependencies: [
-                "Router",
-                "WPDataSource"
+                "Router"
             ]
         ),
         .testTarget(

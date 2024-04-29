@@ -6,7 +6,6 @@
 //
 
 import Observation
-import SwiftPresso
 
 typealias PostDetailViewModelObservable = PostDetailViewModelProtocol & Observable
 
