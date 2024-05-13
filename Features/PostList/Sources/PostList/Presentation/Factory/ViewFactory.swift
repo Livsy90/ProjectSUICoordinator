@@ -31,6 +31,7 @@ struct ViewFactory {
                 .background(.purple)
                 .foregroundStyle(.white)
                 .font(.headline)
+                .cornerRadius(16)
             
         case .menu(let model):
             Text(model)
@@ -38,6 +39,7 @@ struct ViewFactory {
                 .background(.cyan)
                 .foregroundStyle(.white)
                 .font(.headline)
+                .cornerRadius(16)
         }
     }
     

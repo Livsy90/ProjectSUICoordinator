@@ -54,4 +54,5 @@ public struct PostListCordinator: View {
                 }
             }
     }
+    
 }

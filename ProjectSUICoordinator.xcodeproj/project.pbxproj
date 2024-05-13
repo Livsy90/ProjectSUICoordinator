@@ -64,12 +64,12 @@
 		D6D7DFB92BC2753100B8EEE5 /* ProjectSUICoordinator */ = {
 			isa = PBXGroup;
 			children = (
+				D6D7DFD32BC2910700B8EEE5 /* AppTabView.swift */,
 				D6D7DFC92BC278FC00B8EEE5 /* PostListTabCoordinator.swift */,
 				D6D7DFBA2BC2753100B8EEE5 /* ProjectSUICoordinatorApp.swift */,
 				D6D7DFBC2BC2753100B8EEE5 /* ContentView.swift */,
 				D6D7DFBE2BC2753400B8EEE5 /* Assets.xcassets */,
 				D6D7DFC02BC2753400B8EEE5 /* Preview Content */,
-				D6D7DFD32BC2910700B8EEE5 /* AppTabView.swift */,
 			);
 			path = ProjectSUICoordinator;
 			sourceTree = "<group>";

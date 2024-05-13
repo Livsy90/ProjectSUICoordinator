@@ -22,12 +22,16 @@ struct PostDetailsView: View {
             Text(viewModel.content)
                 .padding()
         }
+        .background {
+            AuroraView()
+        }
         .toolbar {
             ToolbarItem(placement: .topBarTrailing) {
                 Button {
                     router.presentSheet(destination: SheetDestination.share(model: "Share"))
                 } label: {
                     Image(systemName: "square.and.arrow.up")
+                        .foregroundColor(.white)
                 }
             }
         }

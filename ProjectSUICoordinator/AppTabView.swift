@@ -22,6 +22,7 @@ struct AppTabView: View {
                     UITabBar.appearance().barTintColor = .white
                 }
         }
+        .accentColor(.white)
     }
 }
 
