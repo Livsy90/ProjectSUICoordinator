@@ -28,7 +28,7 @@ struct PostDetailsView: View {
         .toolbar {
             ToolbarItem(placement: .topBarTrailing) {
                 Button {
-                    router.presentSheet(destination: SheetDestination.share(model: "Share"))
+                    router.presentSheet(destination: SheetDestination.share(model: "This is Modal View #2"))
                 } label: {
                     Image(systemName: "square.and.arrow.up")
                         .foregroundColor(.white)

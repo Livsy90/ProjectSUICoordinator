@@ -36,7 +36,7 @@ struct ViewFactory {
         case .menu(let model):
             Text(model)
                 .padding()
-                .background(.cyan)
+                .background(.green)
                 .foregroundStyle(.white)
                 .font(.headline)
                 .cornerRadius(16)

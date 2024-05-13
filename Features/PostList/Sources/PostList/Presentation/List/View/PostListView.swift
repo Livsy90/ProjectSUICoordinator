@@ -79,7 +79,7 @@ struct PostListView: View {
             .toolbar {
                 ToolbarItem(placement: .topBarLeading) {
                     Button {
-                        router.presentSheet(destination: SheetDestination.menu(model: "Menu"))
+                        router.presentSheet(destination: SheetDestination.menu(model: "This is Modal View #1"))
                     } label: {
                         Image(systemName: "line.3.horizontal")
                             .foregroundColor(.white)
