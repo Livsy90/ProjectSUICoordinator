@@ -26,12 +26,19 @@ struct ViewFactory {
             PostDetailsView(viewModel: PostDetailViewModel(content: model))
             
         case .share(let model):
-            Text(model)
-                .padding()
-                .background(.purple)
-                .foregroundStyle(.white)
-                .font(.headline)
-                .cornerRadius(16)
+            VStack {
+                Text(model)
+                    .padding()
+                    .foregroundStyle(.white)
+                    .font(.subheadline)
+                
+                Text("Press to close")
+                    .padding()
+                    .background(.purple)
+                    .foregroundStyle(.white)
+                    .font(.headline)
+                    .cornerRadius(16)
+            }
             
         case .menu(let model):
             Text(model)

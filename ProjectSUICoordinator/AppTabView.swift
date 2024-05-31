@@ -18,11 +18,7 @@ struct AppTabView: View {
                     Text("Home")
                         .tag(0)
                 }
-                .onAppear {
-                    UITabBar.appearance().barTintColor = .white
-                }
         }
-        .accentColor(.white)
     }
 }
 

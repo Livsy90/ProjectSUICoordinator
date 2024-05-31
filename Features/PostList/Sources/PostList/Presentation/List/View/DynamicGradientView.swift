@@ -7,33 +7,61 @@
 
 import SwiftUI
 
-struct AuroraView: View {
+private enum Colors {
+    static var all: [Color] {
+        [
+            Color.red,
+            Color.pink,
+            Color.blue,
+            Color.purple,
+            Color.indigo,
+        ]
+    }
     
-    private enum AnimationProperties {
-        static let animationSpeed: Double = 4
-        static let timerDuration: TimeInterval = 3
+    static var backgroundColor: Color {
+        Color(
+            red: 23/255,
+            green: 81/255,
+            blue: 104/255
+        )
+    }
+}
+
+struct DynamicGradientView: View {
+    
+    private enum Animation {
+        static let speed: Double = 3
+        static let timerDuration: TimeInterval = 2
         static let blurRadius: CGFloat = 130
     }
     
-    @State private var timer = Timer.publish(every: AnimationProperties.timerDuration, on: .main, in: .common).autoconnect()
-    @ObservedObject private var animator = CircleAnimator(colors: AuroraColors.all)
+    @ObservedObject private var animator = CircleAnimator(colors: Colors.all)
+    @State private var timer = Timer.publish(
+        every: Animation.timerDuration,
+        on: .main,
+        in: .common
+    ).autoconnect()
     
     var body: some View {
         ZStack {
             ZStack {
                 ForEach(animator.circles) { circle in
-                    MovingCircle(originOffset: circle.position)
+                    CircleShape(originOffset: circle.position)
                         .foregroundColor(circle.color)
                 }
-            }.blur(radius: AnimationProperties.blurRadius)
+            }.blur(radius: Animation.blurRadius)
         }
-        .background(AuroraColors.backgroundColor)
+        .background(Colors.backgroundColor)
         .onDisappear {
             timer.upstream.connect().cancel()
         }
         .onAppear {
             animateCircles()
-            timer = Timer.publish(every: AnimationProperties.timerDuration, on: .main, in: .common).autoconnect()
+            timer = Timer.publish(
+                every: Animation.timerDuration,
+                on: .main,
+                in: .common
+            ).autoconnect()
         }
         .onReceive(timer) { _ in
             animateCircles()
@@ -41,30 +69,14 @@ struct AuroraView: View {
     }
     
     private func animateCircles() {
-        withAnimation(.easeInOut(duration: AnimationProperties.animationSpeed)) {
+        withAnimation(.easeInOut(duration: Animation.speed)) {
             animator.animate()
         }
     }
     
 }
 
-private enum AuroraColors {
-    static var all: [Color] {
-        [
-            Color(red: 11/255, green: 36/255, blue: 40/255, opacity: 0.6),
-            Color(red: 24/255, green: 99/255, blue: 110/255),
-            Color(red: 185/255, green: 249/255, blue: 137/255, opacity: 0.7),
-            Color(red: 63/255, green: 140/255, blue: 78/255),
-            Color(red: 185/255, green: 249/255, blue: 137/255),
-        ]
-    }
-    
-    static var backgroundColor: Color {
-        Color(red: 23/255, green: 81/255, blue: 104/255)
-    }
-}
-
-private struct MovingCircle: Shape {
+private struct CircleShape: Shape {
     
     var originOffset: CGPoint
     
@@ -83,13 +95,21 @@ private struct MovingCircle: Shape {
         let adjustedX = rect.width * originOffset.x
         let adjustedY = rect.height * originOffset.y
         let smallestDimension = min(rect.width, rect.height)
-        path.addArc(center: CGPoint(x: adjustedX, y: adjustedY), radius: smallestDimension/2, startAngle: .zero, endAngle: .degrees(360), clockwise: true)
+
+        path.addArc(
+            center: CGPoint(x: adjustedX, y: adjustedY),
+            radius: smallestDimension / 2,
+            startAngle: .zero,
+            endAngle: .degrees(360),
+            clockwise: true
+        )
+        
         return path
     }
 }
 
 private class CircleAnimator: ObservableObject {
-    class Circle: Identifiable {
+    final class Circle: Identifiable {
         internal init(position: CGPoint, color: Color) {
             self.position = position
             self.color = color
@@ -104,7 +124,10 @@ private class CircleAnimator: ObservableObject {
     
     init(colors: [Color]) {
         circles = colors.map({ color in
-            Circle(position: CircleAnimator.generateRandomPosition(), color: color)
+            Circle(
+                position: CircleAnimator.generateRandomPosition(),
+                color: color
+            )
         })
     }
     
@@ -116,12 +139,9 @@ private class CircleAnimator: ObservableObject {
     }
     
     static func generateRandomPosition() -> CGPoint {
-        CGPoint(x: CGFloat.random(in: 0 ... 1), y: CGFloat.random(in: 0 ... 1))
-    }
-}
-
-struct AuroraView_Previews: PreviewProvider {
-    static var previews: some View {
-        AuroraView()
+        CGPoint(
+            x: CGFloat.random(in: 0 ... 1),
+            y: CGFloat.random(in: 0 ... 1)
+        )
     }
 }

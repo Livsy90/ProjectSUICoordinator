@@ -24,7 +24,7 @@ enum SheetDestination: Identifiable {
     case share(model: String)
 }
 
-public struct PostListCordinator: View {
+public struct PostListCoordinator: View {
     @Environment(Router.self) private var router
     
     public init() {}

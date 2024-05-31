@@ -15,7 +15,7 @@ struct PostListTabCoordinator: View {
     
     var body: some View {
         NavigationStack(path: $router.navigationPath) {
-            PostListCordinator()
+            PostListCoordinator()
         }
         .environment(router)
     }

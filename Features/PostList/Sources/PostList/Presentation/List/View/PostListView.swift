@@ -73,16 +73,14 @@ struct PostListView: View {
             .background {
                 ZStack {
                     clubbedView()
-                    
                 }
             }
             .toolbar {
                 ToolbarItem(placement: .topBarLeading) {
                     Button {
-                        router.presentSheet(destination: SheetDestination.menu(model: "This is Modal View #1"))
+                        router.presentSheet(destination: SheetDestination.menu(model: "This is Modal View"))
                     } label: {
                         Image(systemName: "line.3.horizontal")
-                            .foregroundColor(.white)
                     }
                 }
                 
@@ -100,7 +98,7 @@ struct PostListView: View {
     }
     
     @ViewBuilder
-    private func clubbedView()->some View{
+    private func clubbedView() -> some View {
         Rectangle()
             .fill(.linearGradient(colors: [Color.purple, Color.pink], startPoint: .top, endPoint: .bottom))
             .mask({
@@ -128,7 +126,7 @@ struct PostListView: View {
     }
     
     @ViewBuilder
-    private func clubbedRoundedRectangle(offset: CGSize)->some View{
+    private func clubbedRoundedRectangle(offset: CGSize) -> some View {
         RoundedRectangle(cornerRadius: 30, style: .continuous)
             .fill(.white)
             .frame(width: 120, height: 120)
