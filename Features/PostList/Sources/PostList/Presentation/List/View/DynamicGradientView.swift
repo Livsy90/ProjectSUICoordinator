@@ -1,5 +1,5 @@
 //
-//  AuroraView.swift
+//  DynamicGradientView.swift
 //
 //
 //  Created by Livsy on 13.05.2024.
